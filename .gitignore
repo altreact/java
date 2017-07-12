@@ -1,0 +1,11 @@
+# .gitignore for java terminal projects in intelliJ
+
+# intelliJ genereated files
+.idea/
+out/
+*.html
+*.xml
+*.iml
+
+# java specific compiled files
+*.class
