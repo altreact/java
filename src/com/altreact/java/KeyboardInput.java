@@ -1,8 +1,10 @@
 package com.altreact.java;
 
+import com.altreact.java.output.SimplerOutput;
+
 import java.util.Scanner;
 
-class KeyboardInput extends SimplerOutput {
+public class KeyboardInput extends SimplerOutput {
 
     private static Scanner keyboardInput = new Scanner(System.in);
 
@@ -10,19 +12,19 @@ class KeyboardInput extends SimplerOutput {
     private int lowestAcceptableValue;
     private int highestAcceptableValue;
 
-    void setUserPromptMessage(String userPromptMessage) {
+    public void setUserPromptMessage(String userPromptMessage) {
        this.userPromptMessage = userPromptMessage;
     }
 
-    void setLowestAcceptableValue(int lowestAcceptableValue) {
+    public void setLowestAcceptableValue(int lowestAcceptableValue) {
         this.lowestAcceptableValue = lowestAcceptableValue;
     }
 
-    void setHighestAcceptableValue(int highestAcceptableValue) {
+    public void setHighestAcceptableValue(int highestAcceptableValue) {
         this.highestAcceptableValue = highestAcceptableValue;
     }
 
-    int getValueWithinConstraints() {
+    public int getValueWithinConstraints() {
         int value;
         do {
             output(userPromptMessage);

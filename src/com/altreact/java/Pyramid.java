@@ -1,5 +1,7 @@
 package com.altreact.java;
 
+import com.altreact.java.output.SimplerOutput;
+
 public class Pyramid extends SimplerOutput {
 
     private int numberOfRows;
@@ -7,11 +9,11 @@ public class Pyramid extends SimplerOutput {
     private int numberOfSpaces;
     private int currentRowNumber;
 
-    void setNumberOfRows(int numberOfRows) {
+    public void setNumberOfRows(int numberOfRows) {
         this.numberOfRows = numberOfRows;
     }
 
-    void outputPyramid() {
+    public void outputPyramid() {
         outputPyramidRows();
     }
 

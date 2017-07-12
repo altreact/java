@@ -3,9 +3,7 @@
 # intelliJ genereated files
 .idea/
 out/
-*.html
-*.xml
 *.iml
 
-# java specific compiled files
-*.class
+# unwanted program generated file
+MarioPyramid.txt
