@@ -4,58 +4,54 @@ import com.altreact.java.output.SimplerOutput;
 
 public class Pyramid extends SimplerOutput {
 
-    private int numberOfRows;
-    private int numberOfHashes;
-    private int numberOfSpaces;
-    private int currentRowNumber;
+    protected static int numberOfRows;
+    private static int numberOfHashes;
+    private static int numberOfSpaces;
+    private static int currentRowNumber;
 
-    public void setNumberOfRows(int numberOfRows) {
-        this.numberOfRows = numberOfRows;
-    }
-
-    public void outputPyramid() {
+    protected static void outputPyramid() {
         outputPyramidRows();
     }
 
-    private void outputPyramidRows() {
+    private static void outputPyramidRows() {
         for (currentRowNumber = 1; currentRowNumber < numberOfRows + 1; currentRowNumber++) {
             outputPyramidRow();
         }
     }
 
-    private void outputPyramidRow() {
+    private static void outputPyramidRow() {
         generatePyramidRowValues();
         output(getRepeatedSpacesString() + getRepeatedHashesString() + "\n");
         resetPyramidRowValues();
     }
 
-    private void generatePyramidRowValues(){
+    private static void generatePyramidRowValues(){
         generateHashSubstring();
         generateSpaceSubstring();
     }
 
-    private void generateHashSubstring() {
+    private static void generateHashSubstring() {
         numberOfHashes = 1 + currentRowNumber;
     }
 
-    private void generateSpaceSubstring() {
+    private static void generateSpaceSubstring() {
         numberOfSpaces = numberOfRows + 1 - numberOfHashes;
     }
 
-    private void resetPyramidRowValues() {
+    private static void resetPyramidRowValues() {
         numberOfHashes = 0;
         numberOfSpaces = 0;
     }
 
-    private String getRepeatedSpacesString() {
+    private static String getRepeatedSpacesString() {
         return getRepeatedCharacterString(numberOfSpaces, ' ');
     }
 
-    private String getRepeatedHashesString() {
+    private static String getRepeatedHashesString() {
         return getRepeatedCharacterString(numberOfHashes, '#');
     }
 
-    private String getRepeatedCharacterString(int numberOfTimesToRepeatCharacter, char characterToRepeat) {
+    private static String getRepeatedCharacterString(int numberOfTimesToRepeatCharacter, char characterToRepeat) {
         StringBuilder repeatedCharacterStringBuilder = new StringBuilder();
         for (int x = 0; x < numberOfTimesToRepeatCharacter; x++) {
             repeatedCharacterStringBuilder.append(characterToRepeat);

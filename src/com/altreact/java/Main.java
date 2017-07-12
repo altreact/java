@@ -1,12 +1,10 @@
 package com.altreact.java;
 
-import com.altreact.java.output.PyramidOutputOptions;
+import com.altreact.java.output.setPyramidOutputOption;
 
-import java.io.FileNotFoundException;
+public class Main extends setPyramidOutputOption {
 
-public class Main {
-
-    public static void main(String[] args) throws FileNotFoundException {
-        PyramidOutputOptions.outputPyramid();
+    public static void main(String[] args) {
+        pyramidOut();
     }
 }

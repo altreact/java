@@ -7,35 +7,34 @@ import java.io.File;
 
 class SystemOutputOptions extends SimplerOutput {
 
-    private PrintStream consolePrintStream;
-    private PrintStream filePrintStream;
+    private static PrintStream consolePrintStream;
 
-    SystemOutputOptions() {
-        this.consolePrintStream = System.out;
-        this.filePrintStream = getFilePrintStream();
-    }
-
-    void setFileOutputStream() {
+    static void setFileOutputPrintStream() {
+        PrintStream filePrintStream = getFilePrintStream();
         setPrintStreamTo(filePrintStream);
     }
 
-    void setConsolePrintStream() {
+    static void setConsolePrintStream() {
         setPrintStreamTo(consolePrintStream);
     }
 
-    private PrintStream getFilePrintStream() {
+    private static PrintStream getFilePrintStream() {
+
+        PrintStream printStream;
+        consolePrintStream = System.out;
 
         try {
             File outputFile = new File("MarioPyramid.txt");
             FileOutputStream fileOutputStream = new FileOutputStream(outputFile);
-            return new PrintStream(fileOutputStream);
+            printStream = new PrintStream(fileOutputStream);
         } catch (FileNotFoundException e) {
             output("trouble finding file: " + e.getMessage());
-            return consolePrintStream;
+            printStream = consolePrintStream;
         }
+        return printStream;
     }
 
-    private void setPrintStreamTo(PrintStream printStream) {
+    private static void setPrintStreamTo(PrintStream printStream) {
         System.setOut(printStream);
     }
 }

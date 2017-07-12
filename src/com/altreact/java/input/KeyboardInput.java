@@ -1,4 +1,4 @@
-package com.altreact.java;
+package com.altreact.java.input;
 
 import com.altreact.java.output.SimplerOutput;
 

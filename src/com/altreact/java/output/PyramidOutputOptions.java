@@ -1,41 +1,18 @@
 package com.altreact.java.output;
 
-import com.altreact.java.KeyboardInput;
+import com.altreact.java.input.KeyboardInput;
 import com.altreact.java.Pyramid;
-import java.io.FileNotFoundException;
 
-public class PyramidOutputOptions extends SimplerOutput {
+class PyramidOutputOptions extends Pyramid {
 
-    public static void outputPyramid() throws FileNotFoundException {
-
-        Pyramid pyramid = new Pyramid();
-
-        pyramid.setNumberOfRows(getUserSelectedNumberOfRows());
-
-        if (getUserSelectedOutputOption() == 2) {
-            SystemOutputOptions systemOutputOptions = new SystemOutputOptions();
-
-            systemOutputOptions.setFileOutputStream();
-
-            pyramid.outputPyramid();
-
-            systemOutputOptions.setConsolePrintStream();
-
-            output("Mario pyramid has been written to MarioPyramid.txt");
-
-        } else {
-            pyramid.outputPyramid();
-        }
-    }
-
-    private static int getUserSelectedNumberOfRows() {
+    static int getUserSelectedNumberOfRows() {
 
         KeyboardInput numberOfRows = getUserNumberOfRowsSelection();
         return userSelection(numberOfRows);
 
     }
 
-    private static int getUserSelectedOutputOption(){
+    static int getUserSelectedOutputOption(){
 
         KeyboardInput pyramidOutputOption = getUserPyramidOutputOptionSelection();
         return userSelection(pyramidOutputOption);
