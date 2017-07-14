@@ -5,7 +5,7 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.File;
 
-class SystemOutputOptions extends SimplerOutput {
+class System extends SimplerPrint {
 
     private static PrintStream consolePrintStream;
 
@@ -14,14 +14,10 @@ class SystemOutputOptions extends SimplerOutput {
         setPrintStreamTo(filePrintStream);
     }
 
-    static void setConsolePrintStream() {
-        setPrintStreamTo(consolePrintStream);
-    }
-
     private static PrintStream getFilePrintStream() {
 
         PrintStream printStream;
-        consolePrintStream = System.out;
+        consolePrintStream = java.lang.System.out;
 
         try {
             File outputFile = new File("MarioPyramid.txt");
@@ -34,7 +30,11 @@ class SystemOutputOptions extends SimplerOutput {
         return printStream;
     }
 
+    static void setConsolePrintStream() {
+        setPrintStreamTo(consolePrintStream);
+    }
+
     private static void setPrintStreamTo(PrintStream printStream) {
-        System.setOut(printStream);
+        java.lang.System.setOut(printStream);
     }
 }

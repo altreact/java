@@ -1,10 +1,14 @@
 package com.altreact.java;
 
-import com.altreact.java.output.setPyramidOutputOption;
+import com.altreact.java.output.Context;
 
-public class Main extends setPyramidOutputOption {
+public class Main extends Context {
 
     public static void main(String[] args) {
-        pyramidOut();
+
+        letUserSelectNumberOfRowsInPyramid();
+        letUserSelectPyramidOutputOption();
+
+        outputMarioPyramid();
     }
 }

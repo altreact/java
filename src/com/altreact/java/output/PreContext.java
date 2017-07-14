@@ -1,26 +1,16 @@
 package com.altreact.java.output;
 
-public class setPyramidOutputOption extends PyramidOutputOptions {
+import com.altreact.java.input.User;
+
+public class PreContext extends User {
 
     private static int userSelectedPyramidOutputOption;
 
-    protected static void pyramidOut() {
-
-        letUserSelectNumberOfRowsInPyramid();
-        letUserSelectPyramidOutputOption();
-
-        if (pyramidOutputToFileWasChosenByUser()) {
-            outputPyramidToFile();
-        } else {
-            outputPyramidToScreen();
-        }
-    }
-
-    private static void outputPyramidToScreen() {
+    static void outputPyramidToScreen() {
         outputPyramid();
     }
 
-    private static void outputPyramidToFile() {
+    static void outputPyramidToFile() {
         setPyramidOutputToFile();
         outputPyramid();
         confirmFileOutput();
@@ -31,24 +21,24 @@ public class setPyramidOutputOption extends PyramidOutputOptions {
         confirmOutputToFile();
     }
 
-    private static void letUserSelectNumberOfRowsInPyramid() {
+    protected static void letUserSelectNumberOfRowsInPyramid() {
         numberOfRows = userSelectedNumberOfRows();
     }
 
-    private static void letUserSelectPyramidOutputOption() {
+    protected static void letUserSelectPyramidOutputOption() {
         userSelectedPyramidOutputOption = getUserSelectedOutputOption();
     }
 
-    private static boolean pyramidOutputToFileWasChosenByUser() {
+    static boolean pyramidOutputToFileWasChosenByUser() {
         return userSelectedPyramidOutputOption == 2;
     }
 
     private static void setPyramidOutputToFile() {
-        SystemOutputOptions.setFileOutputPrintStream();
+        System.setFileOutputPrintStream();
     }
 
     private static void setOutputToScreen() {
-        SystemOutputOptions.setConsolePrintStream();
+        System.setConsolePrintStream();
     }
 
     private static void confirmOutputToFile() {

@@ -1,12 +1,12 @@
 package com.altreact.java.output;
 
-public class SimplerOutput {
+public class SimplerPrint {
 
     protected static void outputEmptyLine() {
-        System.out.println();
+        java.lang.System.out.println();
     }
 
     protected static void output(String string) {
-        System.out.print(string);
+        java.lang.System.out.print(string);
     }
 }

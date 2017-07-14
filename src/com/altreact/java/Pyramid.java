@@ -1,8 +1,8 @@
 package com.altreact.java;
 
-import com.altreact.java.output.SimplerOutput;
+import com.altreact.java.output.SimplerPrint;
 
-public class Pyramid extends SimplerOutput {
+public class Pyramid extends SimplerPrint {
 
     protected static int numberOfRows;
     private static int numberOfHashes;
