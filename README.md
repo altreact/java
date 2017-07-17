@@ -2,4 +2,4 @@
 
 Work fos CS50 Java Mastery Track
 
-check verions and branches for code evolution
+check versions and branches for code evolution
