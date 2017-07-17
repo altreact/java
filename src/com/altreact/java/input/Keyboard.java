@@ -1,7 +1,6 @@
 package com.altreact.java.input;
 
 import com.altreact.java.output.SimplerPrint;
-
 import java.util.Scanner;
 
 class Keyboard extends SimplerPrint {
@@ -25,7 +24,9 @@ class Keyboard extends SimplerPrint {
     }
 
     int getValueWithinConstraints() {
+
         int value;
+
         do {
             output(userPromptMessage);
             value = getUserInputInteger();
@@ -39,6 +40,7 @@ class Keyboard extends SimplerPrint {
     }
 
     private static int getIntegerFromString(String value) {
+
         try {
             return Integer.parseInt(value);
         } catch (NumberFormatException e) {

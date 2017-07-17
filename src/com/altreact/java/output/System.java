@@ -5,11 +5,11 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.io.File;
 
-class System extends SimplerPrint {
+public class System extends SimplerPrint {
 
     private static PrintStream consolePrintStream;
 
-    static void setFileOutputPrintStream() {
+    public static void setFileOutputPrintStream() {
         PrintStream filePrintStream = getFilePrintStream();
         setPrintStreamTo(filePrintStream);
     }
@@ -30,7 +30,7 @@ class System extends SimplerPrint {
         return printStream;
     }
 
-    static void setConsolePrintStream() {
+    public static void setConsolePrintStream() {
         setPrintStreamTo(consolePrintStream);
     }
 

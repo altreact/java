@@ -1,15 +1,21 @@
 package com.altreact.java.input;
 
-public class User extends com.altreact.java.Pyramid {
+import com.altreact.java.output.UserInputPrompts;
+import com.altreact.java.output.pyramid.Constraints;
+
+public class User {
+
+    private static UserInputPrompts userInputPrompts = new UserInputPrompts();
+    private static Constraints constraints = new Constraints();
+    private static Keyboard selection = new Keyboard();
 
     protected static int getUserSelectedNumberOfRows() {
 
         Keyboard numberOfRows = getUserNumberOfRowsSelection();
         return userSelection(numberOfRows);
-
     }
 
-    protected static int getUserSelectedOutputOption(){
+    protected static int getUserSelectedOutputOption() {
 
         Keyboard pyramidOutputOption = getUserPyramidOutputOptionSelection();
         return userSelection(pyramidOutputOption);
@@ -21,19 +27,24 @@ public class User extends com.altreact.java.Pyramid {
 
     private static Keyboard getUserNumberOfRowsSelection() {
 
-        String userPromptMessage = "\n# must be between 0 - 23\nEnter height of Mario User: ";
-        return getSelection(userPromptMessage, 23, 0);
+        return getSelection(
+                userInputPrompts.numberOfRows,
+                constraints.numberOfRowsHighestAcceptableValue,
+                constraints.numberOfRowsLowestAcceptableValue
+        );
     }
 
     private static Keyboard getUserPyramidOutputOptionSelection() {
+        return getSelection(
 
-        String userPromptMessage = "\nOutput options:\n  1) to print to console\n  2) to write to file (MarioPyramid.txt)\n\nEnter output option: ";
-        return getSelection(userPromptMessage, 2, 1);
+                userInputPrompts.pyramidOutputOptions,
+                constraints.outputOptionsHighestAcceptableValue,
+                constraints.outputOptionsLowestAcceptableValue
+        );
     }
 
-    private static Keyboard getSelection(String userPromptMessage, int highestAcceptableValue, int lowestAcceptableValue) {
-
-        Keyboard selection = new Keyboard();
+    private static Keyboard getSelection(String userPromptMessage, int highestAcceptableValue,
+            int lowestAcceptableValue) {
 
         selection.setUserPromptMessage(userPromptMessage);
         selection.setHighestAcceptableValue(highestAcceptableValue);

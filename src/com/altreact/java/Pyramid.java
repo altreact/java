@@ -4,12 +4,16 @@ import com.altreact.java.output.SimplerPrint;
 
 public class Pyramid extends SimplerPrint {
 
-    protected static int numberOfRows;
+    private static int numberOfRows;
     private static int numberOfHashes;
     private static int numberOfSpaces;
     private static int currentRowNumber;
 
-    protected static void outputPyramid() {
+    public void setNumberOfRows(int userEnteredNumberOfRows) {
+        numberOfRows = userEnteredNumberOfRows;
+    }
+
+    public void outputPyramid() {
         outputPyramidRows();
     }
 

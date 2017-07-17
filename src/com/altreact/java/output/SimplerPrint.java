@@ -6,7 +6,7 @@ public class SimplerPrint {
         java.lang.System.out.println();
     }
 
-    protected static void output(String string) {
+    public static void output(String string) {
         java.lang.System.out.print(string);
     }
 }
