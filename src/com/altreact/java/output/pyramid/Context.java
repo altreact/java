@@ -11,41 +11,37 @@ public class Context extends User {
     private static int userSelectedPyramidOutputOption;
 
     protected static void outputMarioPyramid() {
-        letUserChooseOutputOptions();
-        setPyramidOutputOption();
-        outputPyramid();
-    }
-
-    private static void letUserChooseOutputOptions() {
         letUserSelectNumberOfRowsInPyramid();
         letUserSelectPyramidOutputOption();
-    }
-
-    private static void setPyramidOutputOption() {
-        if (pyramidOutputToFileWasChosenByUser()) {
-            userSelectedOutputOption = new File();
-        } else {
-            userSelectedOutputOption = new Screen();
-        }
-    }
-
-    private static void outputPyramid() {
-        userSelectedOutputOption.pyramidOutputStrategy(pyramid);
+        setPyramidOutputOption();
+        outputPyramid();
     }
 
     private static void letUserSelectNumberOfRowsInPyramid() {
         pyramid.setNumberOfRows(userSelectedNumberOfRows());
     }
 
+    private static int userSelectedNumberOfRows() {
+        return getUserSelectedNumberOfRows();
+    }
+
     private static void letUserSelectPyramidOutputOption() {
         userSelectedPyramidOutputOption = getUserSelectedOutputOption();
+    }
+
+    private static void setPyramidOutputOption() {
+        if (pyramidOutputToFileWasChosenByUser()) {
+            userSelectedOutputOption = PyramidOutput.toFile();
+        } else {
+            userSelectedOutputOption = PyramidOutput.toScreen();
+        }
     }
 
     private static boolean pyramidOutputToFileWasChosenByUser() {
         return userSelectedPyramidOutputOption == 2;
     }
 
-    private static int userSelectedNumberOfRows() {
-        return getUserSelectedNumberOfRows();
+    private static void outputPyramid() {
+        userSelectedOutputOption.pyramidOutputStrategy(pyramid);
     }
 }
