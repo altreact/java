@@ -9,7 +9,7 @@ public class Pyramid extends SimplerPrint {
     private static int numberOfSpaces;
     private static int currentRowNumber;
 
-    public void setNumberOfRows(int userEnteredNumberOfRows) {
+    void setNumberOfRows(int userEnteredNumberOfRows) {
         numberOfRows = userEnteredNumberOfRows;
     }
 

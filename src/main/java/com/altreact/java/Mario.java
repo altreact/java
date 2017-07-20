@@ -1,20 +1,34 @@
-package com.altreact.java.output.pyramid;
+package com.altreact.java;
 
-import com.altreact.java.input.User;
+import static com.altreact.java.input.User.getUserSelectedNumberOfRows;
+import static com.altreact.java.input.User.getUserSelectedOutputOption;
 import com.altreact.java.output.pyramid.options.*;
-import com.altreact.java.Pyramid;
 
-public class Context extends User {
+public class Mario {
+
+    public static void main(String[] args) {
+      Mario mario = new Mario(PyramidOutput.getInstance());
+      mario.start();
+    }
+
+    private void start() {
+        outputMarioPyramid();
+    }
 
     private static Option userSelectedOutputOption;
     private static Pyramid pyramid = new Pyramid();
     private static int userSelectedPyramidOutputOption;
+    private PyramidOutput pyramidOutput;
 
-    protected static void outputMarioPyramid() {
+    private static void outputMarioPyramid() {
         letUserSelectNumberOfRowsInPyramid();
         letUserSelectPyramidOutputOption();
         setPyramidOutputOption();
         outputPyramid();
+    }
+
+    private Mario(PyramidOutput pyramidOutput) {
+      this.pyramidOutput = pyramidOutput;
     }
 
     private static void letUserSelectNumberOfRowsInPyramid() {

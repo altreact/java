@@ -9,13 +9,13 @@ public class User {
     private static Constraints constraints = new Constraints();
     private static Keyboard selection = new Keyboard();
 
-    protected static int getUserSelectedNumberOfRows() {
+    public static int getUserSelectedNumberOfRows() {
 
         Keyboard numberOfRows = getUserNumberOfRowsSelection();
         return userSelection(numberOfRows);
     }
 
-    protected static int getUserSelectedOutputOption() {
+    public static int getUserSelectedOutputOption() {
 
         Keyboard pyramidOutputOption = getUserPyramidOutputOptionSelection();
         return userSelection(pyramidOutputOption);
