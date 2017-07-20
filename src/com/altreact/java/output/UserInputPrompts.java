@@ -1,9 +1,11 @@
 package com.altreact.java.output;
 
+import com.altreact.java.Mario;
+
 public class UserInputPrompts {
 
-    public String numberOfRows = "\n# must be between 0 - 23" +
-            "\nEnter height of Mario pyramid: ";
+    public String numberOfRows = "Enter desired height of Mario pyramid (a # between 0 - 23):  ";
+
     public String pyramidOutputOptions = "\nOutput options:\n  " +
             "1) to print to console\n  2) to write to file (MarioPyramid.txt)\n\n" +
             "Enter output option: ";

@@ -9,4 +9,8 @@ public class SimplerPrint {
     public static void output(String string) {
         java.lang.System.out.print(string);
     }
+
+    protected static void outputLine(String string) {
+        java.lang.System.out.println(string);
+    }
 }
