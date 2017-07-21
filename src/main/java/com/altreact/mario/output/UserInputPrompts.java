@@ -1,6 +1,4 @@
-package com.altreact.java.output;
-
-import com.altreact.java.Mario;
+package com.altreact.mario.output;
 
 public class UserInputPrompts {
 

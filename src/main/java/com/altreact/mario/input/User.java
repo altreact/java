@@ -1,7 +1,7 @@
-package com.altreact.java.input;
+package com.altreact.mario.input;
 
-import com.altreact.java.output.UserInputPrompts;
-import com.altreact.java.output.pyramid.Constraints;
+import com.altreact.mario.output.UserInputPrompts;
+import com.altreact.mario.output.pyramid.Constraints;
 
 public class User {
 

@@ -1,4 +1,4 @@
-package com.altreact.java.output.pyramid;
+package com.altreact.mario.output.pyramid;
 
 public class Constraints {
 

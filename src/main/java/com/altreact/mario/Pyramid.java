@@ -1,6 +1,6 @@
-package com.altreact.java;
+package com.altreact.mario;
 
-import com.altreact.java.output.SimplerPrint;
+import com.altreact.mario.output.SimplerPrint;
 
 public class Pyramid extends SimplerPrint {
 

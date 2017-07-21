@@ -1,4 +1,4 @@
-package com.altreact.java.output;
+package com.altreact.mario.output;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

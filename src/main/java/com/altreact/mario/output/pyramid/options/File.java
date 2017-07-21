@@ -1,8 +1,8 @@
-package com.altreact.java.output.pyramid.options;
+package com.altreact.mario.output.pyramid.options;
 
-import com.altreact.java.Pyramid;
-import com.altreact.java.input.User;
-import static com.altreact.java.output.System.*;
+import com.altreact.mario.Pyramid;
+import com.altreact.mario.input.User;
+import static com.altreact.mario.output.System.*;
 
 public class File extends User implements Option {
 

@@ -1,6 +1,6 @@
-package com.altreact.java.input;
+package com.altreact.mario.input;
 
-import com.altreact.java.output.SimplerPrint;
+import com.altreact.mario.output.SimplerPrint;
 import java.util.Scanner;
 
 class Keyboard extends SimplerPrint {

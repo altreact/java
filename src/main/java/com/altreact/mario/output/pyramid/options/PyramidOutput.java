@@ -1,4 +1,4 @@
-package com.altreact.java.output.pyramid.options;
+package com.altreact.mario.output.pyramid.options;
 
 public class PyramidOutput {
 

@@ -1,7 +1,7 @@
-package com.altreact.java.output.pyramid.options;
+package com.altreact.mario.output.pyramid.options;
 
-import com.altreact.java.Pyramid;
-import com.altreact.java.input.User;
+import com.altreact.mario.Pyramid;
+import com.altreact.mario.input.User;
 
 public class Screen extends User implements Option {
 

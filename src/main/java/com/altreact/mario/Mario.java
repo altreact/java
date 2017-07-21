@@ -1,10 +1,10 @@
-package com.altreact.java;
+package com.altreact.mario;
 
-import static com.altreact.java.input.User.getUserSelectedNumberOfRows;
-import static com.altreact.java.input.User.getUserSelectedOutputOption;
-import com.altreact.java.output.SimplerPrint;
+import static com.altreact.mario.input.User.getUserSelectedNumberOfRows;
+import static com.altreact.mario.input.User.getUserSelectedOutputOption;
+import com.altreact.mario.output.SimplerPrint;
 
-import com.altreact.java.output.pyramid.options.*;
+import com.altreact.mario.output.pyramid.options.*;
 
 public class Mario extends SimplerPrint {
 
