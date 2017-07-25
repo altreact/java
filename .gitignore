@@ -1,5 +1,6 @@
 # .gitignore for java terminal projects in intelliJ
 
+
 # intelliJ genereated files
 .idea/
 out/
