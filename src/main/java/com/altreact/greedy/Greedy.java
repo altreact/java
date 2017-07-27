@@ -4,16 +4,16 @@ import static com.altreact.greedy.SimpleOutput.*;
 
 public class Greedy {
 
-    private static double moneyAmount = 4.95;
-    private static double initialMoneyAmount = moneyAmount;
+    private static double initialMoneyAmount = 4.97;
+    private static int moneyAmount = decimalToInt(initialMoneyAmount);
 
     private static int totalNumberOfCoins = 0;
 
-    final private static double dollar = 1.00;
-    final private static double quarter = 0.25;
-    final private static double dime = 0.10;
-    final private static double nickel = 0.05;
-    final private static double penny = 0.01;
+    final private static int dollar = 100;
+    final private static int quarter = 25;
+    final private static int dime = 10;
+    final private static int nickel = 5;
+    final private static int penny = 1;
 
     private static int numberOfDollars = 0;
     private static int numberOfQuarters = 0;
@@ -25,7 +25,7 @@ public class Greedy {
         displayMainMessage();
         // get user imputed double
             // save user inputted double as moneyAmount
-        deductCoinsFromMoneyAmmount();
+        deductCoinsFromMoneyAmount();
         outputTotalNumberOfCoins();
     }
 
@@ -37,7 +37,7 @@ public class Greedy {
         outputEmptyLine();
     }
 
-    private static void deductCoinsFromMoneyAmmount() {
+    private static void deductCoinsFromMoneyAmount() {
 
         numberOfDollars = deductFromMoneyAmmountBy(dollar);
         numberOfQuarters = deductFromMoneyAmmountBy(quarter);
@@ -47,13 +47,13 @@ public class Greedy {
         totalNumberOfCoins = getTotalNumberOfCoins();
     }
 
-    private static int deductFromMoneyAmmountBy(double amountToDeduct) {
+    private static int deductFromMoneyAmmountBy(int amountToDeduct) {
 
         int numberOfCoins = 0;
 
-        while (moneyAmount - amountToDeduct > 0) {
+        while (moneyAmount - amountToDeduct >= 0) {
+
             moneyAmount = moneyAmount - amountToDeduct;
-            System.out.println(moneyAmount);
             numberOfCoins++;
         }
         return numberOfCoins;
@@ -66,13 +66,17 @@ public class Greedy {
     private static void outputTotalNumberOfCoins() {
 
         outputEmptyLine();
-        outputLine("there are:");
-        System.out.printf("    %d dollars,", numberOfDollars);
-        System.out.printf("    %d quarters,", numberOfQuarters);
-        System.out.printf("    %d dimes,", numberOfDimes);
-        System.out.printf("    %d nickels,", numberOfNickels);
-        System.out.printf("    %d pennies,", numberOfPennies);
-        System.out.printf(" for a total of %d coins in %f.", totalNumberOfCoins, initialMoneyAmount);
+        outputLine("there are:\n");
+        System.out.printf("    %d dollars,\n", numberOfDollars);
+        System.out.printf("    %d quarters,\n", numberOfQuarters);
+        System.out.printf("    %d dimes,\n", numberOfDimes);
+        System.out.printf("    %d nickels,\n", numberOfNickels);
+        System.out.printf("    %d pennies,\n\n", numberOfPennies);
+        System.out.printf(" for a total of %d coins in %f.\n", totalNumberOfCoins, initialMoneyAmount);
         outputEmptyLine();
+    }
+
+    private static int decimalToInt(double decimal) {
+        return (int) (decimal * 100);
     }
 }
