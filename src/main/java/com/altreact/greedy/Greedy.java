@@ -1,10 +1,12 @@
 package com.altreact.greedy;
 
-import static com.altreact.greedy.SimpleOutput.*;
+import com.altreact.greedy.input.Keyboard;
+
+import static com.altreact.greedy.output.SimplerOutput.*;
 
 public class Greedy {
 
-    private static double initialMoneyAmount = 4.97;
+    private static double initialMoneyAmount = 0;
     private static int moneyAmount = decimalToInt(initialMoneyAmount);
 
     private static int totalNumberOfCoins = 0;
@@ -23,8 +25,7 @@ public class Greedy {
 
     public static void main(String[] args) {
         displayMainMessage();
-        // get user imputed double
-            // save user inputted double as moneyAmount
+        initialMoneyAmount = Keyboard.getUserInputedValueToMakeChangeFor();
         deductCoinsFromMoneyAmount();
         outputTotalNumberOfCoins();
     }
