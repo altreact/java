@@ -10,5 +10,4 @@ out/
 MarioPyramid.txt
 
 # maven
-pom.xml
 src/test
