@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.altreact.java</groupId>
-    <artifactId>greedy</artifactId>
+    <groupId>com.altreact.greedy</groupId>
+    <artifactId>Greedy</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -15,5 +15,4 @@
             <version>4.3.10.RELEASE</version>
         </dependency>
     </dependencies>
-    
 </project>
