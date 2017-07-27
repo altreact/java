@@ -5,19 +5,23 @@ import static com.altreact.mario.input.User.getUserSelectedOutputOption;
 import com.altreact.mario.output.SimplerPrint;
 
 import com.altreact.mario.output.pyramid.options.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Mario extends SimplerPrint {
 
     public static void main(String[] args) {
 
-      Mario mario = new Mario(PyramidOutput.getInstance());
-      mario.start();
+        ApplicationContext context =
+                new ClassPathXmlApplicationContext("beans.xml");
+
+        Mario marioObject = (Mario) context.getBean("mario");
+        marioObject.start();
     }
 
     private static Option userSelectedOutputOption;
     private static Pyramid pyramid = new Pyramid();
     private static int userSelectedPyramidOutputOption;
-    private PyramidOutput pyramidOutput;
 
     private void start() {
 
@@ -46,10 +50,6 @@ public class Mario extends SimplerPrint {
         letUserSelectPyramidOutputOption();
         setPyramidOutputOption();
         outputPyramid();
-    }
-
-    private Mario(PyramidOutput pyramidOutput) {
-      this.pyramidOutput = pyramidOutput;
     }
 
     private static void letUserSelectNumberOfRowsInPyramid() {
