@@ -25,17 +25,6 @@ public class Greedy {
 
     // use arrays to clean up the following functions //////////////////////////////////////////////////////////////////
 
-    private static void displayProgramNameAndDescription() {
-
-        outputEmptyLine();
-        outputLine("Greedy :");
-        outputEmptyLine();
-        outputLine("outputs least number of coins in change for amount X");
-        outputEmptyLine();
-        outputLine("*****************************************************");
-        outputEmptyLine();
-    }
-
     private static void deductCoinsFromAmountChangeIsNeededFor() {
 
         numberOfDollars = deductFromMoneyAmountBy(dollar);
@@ -45,35 +34,6 @@ public class Greedy {
         numberOfNickels = deductFromMoneyAmountBy(nickel);
         numberOfPennies = deductFromMoneyAmountBy(penny);
         totalNumberOfCoins = getTotalNumberOfCoins();
-    }
-
-    private static int getTotalNumberOfCoins() {
-
-        return numberOfDollars + numberOfHalfDollars +
-                numberOfQuarters + numberOfDimes +
-                numberOfNickels + numberOfPennies;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public static void main(String[] args) {
-
-        start();
-    }
-
-    private static void start() {
-
-        displayProgramNameAndDescription();
-        getUserImputedAmountChangeIsNeededFor();
-        deductCoinsFromAmountChangeIsNeededFor();
-        outputTotalNumberOfCoinsInChange();
-    }
-
-    private static void getUserImputedAmountChangeIsNeededFor() {
-
-        double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor();
-        amountChangeIsNeededFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
-        amountLeftToMakeChangeFor = decimalToInt(amountChangeIsNeededFor);
     }
 
     private static void outputTotalNumberOfCoinsInChange() {
@@ -90,6 +50,46 @@ public class Greedy {
 
         System.out.printf("\n for a total of %d coins in %.2f.\n", totalNumberOfCoins, amountChangeIsNeededFor);
         outputEmptyLine();
+    }
+
+    private static int getTotalNumberOfCoins() {
+
+        return numberOfDollars + numberOfHalfDollars +
+                numberOfQuarters + numberOfDimes +
+                numberOfNickels + numberOfPennies;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void main(String[] args) {
+
+        start();
+    }
+
+    private static void displayProgramNameAndDescription() {
+
+        outputEmptyLine();
+        outputLine("Greedy :");
+        outputEmptyLine();
+        outputLine("outputs least number of coins in change for amount X");
+        outputEmptyLine();
+        outputLine("*****************************************************");
+        outputEmptyLine();
+    }
+
+    private static void start() {
+
+        displayProgramNameAndDescription();
+        getUserImputedAmountChangeIsNeededFor();
+        deductCoinsFromAmountChangeIsNeededFor();
+        outputTotalNumberOfCoinsInChange();
+    }
+
+    private static void getUserImputedAmountChangeIsNeededFor() {
+
+        double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor();
+        amountChangeIsNeededFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
+        amountLeftToMakeChangeFor = decimalToInt(amountChangeIsNeededFor);
     }
 
     private static int deductFromMoneyAmountBy(int amountToDeduct) {
