@@ -6,8 +6,16 @@ public class SimplerOutput {
         java.lang.System.out.print(string);
     }
 
+    public static void output(int integer) {
+        java.lang.System.out.print(integer);
+    }
+
     public static void outputLine(String string) {
         java.lang.System.out.println(string);
+    }
+
+    public static void outputLine(int integer) {
+        java.lang.System.out.println(integer);
     }
 
     public static void outputEmptyLine() {
