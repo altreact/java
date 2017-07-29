@@ -23,25 +23,7 @@ public class Greedy {
     private static int numberOfPennies = 0;
     private static int totalNumberOfCoins = 0;
 
-    public static void main(String[] args) {
-
-        start();
-    }
-
-    private static void start() {
-
-        displayProgramNameAndDescription();
-        getUserImputedAmountChangeIsNeededFor();
-        deductCoinsFromAmountChangeIsNeededFor();
-        outputTotalNumberOfCoinsInChange();
-    }
-
-    private static void getUserImputedAmountChangeIsNeededFor() {
-
-        double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor();
-        amountChangeIsNeededFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
-        amountLeftToMakeChangeFor = decimalToInt(amountChangeIsNeededFor);
-    }
+    // use arrays to clean up the following functions //////////////////////////////////////////////////////////////////
 
     private static void displayProgramNameAndDescription() {
 
@@ -63,6 +45,35 @@ public class Greedy {
         numberOfNickels = deductFromMoneyAmountBy(nickel);
         numberOfPennies = deductFromMoneyAmountBy(penny);
         totalNumberOfCoins = getTotalNumberOfCoins();
+    }
+
+    private static int getTotalNumberOfCoins() {
+
+        return numberOfDollars + numberOfHalfDollars +
+                numberOfQuarters + numberOfDimes +
+                numberOfNickels + numberOfPennies;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    public static void main(String[] args) {
+
+        start();
+    }
+
+    private static void start() {
+
+        displayProgramNameAndDescription();
+        getUserImputedAmountChangeIsNeededFor();
+        deductCoinsFromAmountChangeIsNeededFor();
+        outputTotalNumberOfCoinsInChange();
+    }
+
+    private static void getUserImputedAmountChangeIsNeededFor() {
+
+        double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor();
+        amountChangeIsNeededFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
+        amountLeftToMakeChangeFor = decimalToInt(amountChangeIsNeededFor);
     }
 
     private static void outputTotalNumberOfCoinsInChange() {
@@ -92,11 +103,6 @@ public class Greedy {
         }
 
         return numberOfCoins;
-    }
-
-    private static int getTotalNumberOfCoins() {
-
-        return numberOfDollars + numberOfHalfDollars + numberOfQuarters + numberOfDimes + numberOfNickels + numberOfPennies;
     }
 
     private static void printCoinAmount(String coinName, int totalNumberOfCoinInChange) {
