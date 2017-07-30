@@ -5,13 +5,14 @@ import static com.altreact.greedy.output.SimplerOutput.*;
 
 public class Greedy {
 
-    private static String[] nameOfEachCoin = {"dollar", "half dollar", "quarter", "dime", "nickel", "penny"};
-    private static int[] coinValueOfEachCoin = {100, 50, 25, 10, 5, 1};
-    private static int[] coinCountForEachCoin = {0, 0, 0, 0, 0, 0};
+    private static String[] coinName = {"dollar", "half dollar", "quarter", "dime", "nickel", "penny"};
+    private static int[] coinValue = {100, 50, 25, 10, 5, 1};
+    private static int[] coinCount = {0, 0, 0, 0, 0, 0};
     private static double amountToMakeChangeFor;
     private static int amountLeftToMakeChangeFor;
     private static int totalNumberOfCoins = 0;
     private static char currency = '$';
+    private static String userInputPrompt = "Enter the amount of money you need change for: " + currency;
 
     public static void main(String[] args) {
         start();
@@ -40,12 +41,12 @@ public class Greedy {
 
     private static void getUserImputedAmountChangeIsNeededFor() {
 
-        double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor();
+        double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor(userInputPrompt);
         amountToMakeChangeFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
-        amountLeftToMakeChangeFor = convertDoubleIntoInteger(amountToMakeChangeFor);
+        amountLeftToMakeChangeFor = convertAmountToPennies(amountToMakeChangeFor);
     }
 
-    private static int convertDoubleIntoInteger(double decimal) {
+    private static int convertAmountToPennies(double decimal) {
         return (int) (decimal * 100);
     }
 
@@ -56,32 +57,39 @@ public class Greedy {
 
     private static void MakeChange() {
 
-        int lastCoinInListOfCoins = coinValueOfEachCoin.length;
+        int lastCoinInListOfCoins = coinValue.length;
 
         for (int thisCoin = 0; thisCoin != lastCoinInListOfCoins; thisCoin++) {
-            coinCountForEachCoin[thisCoin] = getMaxCoinCountOfThisCoinForChange(coinValueOfEachCoin[thisCoin]);
+            coinCount[thisCoin] = getMaxCoinCountOfCoinForChange(coinValue[thisCoin]);
         }
 
-        totalNumberOfCoins = getTotalNumberOfCoins();
+        totalNumberOfCoins = setTotalNumberOfCoins();
     }
 
-    private static int getMaxCoinCountOfThisCoinForChange(int valueOfThisCoin) {
+    private static int getMaxCoinCountOfCoinForChange(int valueOfThisCoin) {
 
         int numberOfThisCoinInTotalChange = 0;
 
-        while (amountLeftToMakeChangeFor - valueOfThisCoin >= 0) {
-            amountLeftToMakeChangeFor -= valueOfThisCoin;
-            numberOfThisCoinInTotalChange++;
+        if (amountLeftToMakeChangeFor - valueOfThisCoin >= 0) {
+
+            numberOfThisCoinInTotalChange = amountLeftToMakeChangeFor / valueOfThisCoin;
+            amountLeftToMakeChangeFor = amountLeftToMakeChangeFor % valueOfThisCoin;
+            updateAmountLeftToMakeChangeFor(valueOfThisCoin);
         }
 
         return numberOfThisCoinInTotalChange;
     }
 
-    private static int getTotalNumberOfCoins() {
+    private static void updateAmountLeftToMakeChangeFor(int divisorToGetRemainderFrom) {
+
+        amountLeftToMakeChangeFor %= divisorToGetRemainderFrom;
+    }
+
+    private static int setTotalNumberOfCoins() {
 
         int totalCoinCountInChange = 0;
 
-        for (int numberOfThisCoinInChange : coinCountForEachCoin) {
+        for (int numberOfThisCoinInChange : coinCount) {
             totalCoinCountInChange += numberOfThisCoinInChange;
         }
 
@@ -92,10 +100,10 @@ public class Greedy {
 
         outputLine("There are:");
 
-        int lastCoinInList = coinCountForEachCoin.length;
+        int lastCoinInList = coinCount.length;
 
         for (int thisCoin = 0; thisCoin < lastCoinInList; thisCoin++) {
-            printCoinAmount(nameOfEachCoin[thisCoin], coinCountForEachCoin[thisCoin]);
+            printCoinAmount(coinName[thisCoin], coinCount[thisCoin]);
         }
 
         outputEmptyLine();

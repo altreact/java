@@ -1,19 +1,21 @@
 package com.altreact.greedy.input;
 
+import com.altreact.greedy.UserInputPrompts;
+
 import static com.altreact.greedy.output.SimplerOutput.*;
-import com.altreact.greedy.output.UserInputPrompts;
+
 import java.util.Scanner;
 
 public class Keyboard {
 
     private static Scanner keyboardInput = new Scanner(System.in);
 
-    public static double getUserImputedValueToMakeChangeFor() {
+    public static double getUserImputedValueToMakeChangeFor(String userInputPrompt) {
 
         double value;
 
         do {
-            output(UserInputPrompts.valueToMakeChangeFor);
+            output(userInputPrompt);
             value = getUserInputDouble();
             outputEmptyLine();
         } while (value < 0);
