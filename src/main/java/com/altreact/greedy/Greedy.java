@@ -5,45 +5,51 @@ import static com.altreact.greedy.output.SimplerOutput.*;
 
 public class Greedy {
 
-    private static int[] coinValues = {100, 50, 25, 10, 5, 1};
-    private static String[] coinNames = {"dollar", "half dollar", "quarter", "dime", "nickel", "penny"};
-    private static int[] coinCount = {0, 0, 0, 0, 0, 0};
-    private static double amountChangeIsNeededFor;
+    private static String[] nameOfEachCoin = {"dollar", "half dollar", "quarter", "dime", "nickel", "penny"};
+    private static int[] coinValueOfEachCoin = {100, 50, 25, 10, 5, 1};
+    private static int[] coinCountForEachCoin = {0, 0, 0, 0, 0, 0};
+    private static double amountToMakeChangeFor;
     private static int amountLeftToMakeChangeFor;
     private static int totalNumberOfCoins = 0;
+    private static char currency = '$';
 
     public static void main(String[] args) {
-
         start();
+    }
+
+    public static void setCurrency(char currencySymbol) {
+        currency = currencySymbol;
     }
 
     private static void start() {
 
         displayProgramNameAndDescription();
         getUserImputedAmountChangeIsNeededFor();
-        deductCoinsFromAmountChangeIsNeededFor();
+        MakeChange();
         outputTotalNumberOfCoinsInChange();
     }
 
     private static void displayProgramNameAndDescription() {
 
         outputEmptyLine();
+        outputLine("********************************************************************************");
+        outputEmptyLine();
         outputLine("Greedy :");
         outputEmptyLine();
-        outputLine("outputs least number of coins in change for amount X");
+        outputLine("outputs change for given amount, using the least number of coins as possible");
         outputEmptyLine();
-        outputLine("*****************************************************");
+        outputLine("********************************************************************************");
         outputEmptyLine();
     }
 
     private static void getUserImputedAmountChangeIsNeededFor() {
 
         double userImputedAmountChangeIsNeededFor = Keyboard.getUserImputedValueToMakeChangeFor();
-        amountChangeIsNeededFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
-        amountLeftToMakeChangeFor = decimalToInt(amountChangeIsNeededFor);
+        amountToMakeChangeFor = roundDecimalDownToNearestHundredthsPlace(userImputedAmountChangeIsNeededFor);
+        amountLeftToMakeChangeFor = convertDoubleIntoInteger(amountToMakeChangeFor);
     }
 
-    private static int decimalToInt(double decimal) {
+    private static int convertDoubleIntoInteger(double decimal) {
         return (int) (decimal * 100);
     }
 
@@ -52,48 +58,56 @@ public class Greedy {
         return 0.01 * Math.floor(decimal * 100.0);
     }
 
-    private static int deductFromAmountToMakeChangeFor(int amountToDeduct) {
+    private static void MakeChange() {
 
-        int numberOfCoins = 0;
+        int lastCoinInListOfCoins = coinValueOfEachCoin.length;
 
-        while (amountLeftToMakeChangeFor - amountToDeduct >= 0) {
-            amountLeftToMakeChangeFor -= amountToDeduct;
-            numberOfCoins++;
-        }
-
-        return numberOfCoins;
-    }
-
-    private static void deductCoinsFromAmountChangeIsNeededFor() {
-
-        for (int x = 0; x < coinCount.length; x++) {
-            coinCount[x] = deductFromAmountToMakeChangeFor(coinValues[x]);
+        for (int thisCoin = 0; thisCoin != lastCoinInListOfCoins; thisCoin++) {
+            coinCountForEachCoin[thisCoin] = getMaxCoinCountOfThisCoinForChange(coinValueOfEachCoin[thisCoin]);
         }
 
         totalNumberOfCoins = getTotalNumberOfCoins();
     }
 
-    private static int getTotalNumberOfCoins() {
+    private static int getMaxCoinCountOfThisCoinForChange(int valueOfThisCoin) {
 
-        int totalCoinCount = 0;
+        int numberOfThisCoinInTotalChange = 0;
 
-        for (int coinAmount : coinCount) {
-            totalCoinCount += coinAmount;
+        while (amountLeftToMakeChangeFor - valueOfThisCoin >= 0) {
+            amountLeftToMakeChangeFor -= valueOfThisCoin;
+            numberOfThisCoinInTotalChange++;
         }
 
-        return totalCoinCount;
+        return numberOfThisCoinInTotalChange;
+    }
+
+    private static int getTotalNumberOfCoins() {
+
+        int totalCoinCountInChange = 0;
+
+        for (int numberOfThisCoinInChange : coinCountForEachCoin) {
+            totalCoinCountInChange += numberOfThisCoinInChange;
+        }
+
+        return totalCoinCountInChange;
     }
 
     private static void outputTotalNumberOfCoinsInChange() {
 
-        outputEmptyLine();
-        outputLine("there are:\n");
+        outputLine("There are:");
 
-        for (int x = 0; x < coinCount.length; x++) {
-            printCoinAmount(coinNames[x], coinCount[x]);
+        int lastCoinInList = coinCountForEachCoin.length;
+
+        for (int thisCoin = 0; thisCoin < lastCoinInList; thisCoin++) {
+            printCoinAmount(nameOfEachCoin[thisCoin], coinCountForEachCoin[thisCoin]);
         }
 
-        System.out.printf("\n for a total of %d coins in %.2f.\n", totalNumberOfCoins, amountChangeIsNeededFor);
+        outputEmptyLine();
+        outputEmptyLine();
+        System.out.printf(" For a total of %d coins,", totalNumberOfCoins);
+        outputEmptyLine();
+        outputEmptyLine();
+        System.out.printf(" in " + currency + "%.2f.", amountToMakeChangeFor);
         outputEmptyLine();
     }
 
@@ -107,15 +121,13 @@ public class Greedy {
             if (lastLetterOfCoinName != 'y') {
                 coinName += "s";
             } else {
-
                 String coinNameMinusTheTrailingLetterY = coinName.substring(0,  lengthOfCoinName- 1);
-
                 coinName = coinNameMinusTheTrailingLetterY + "ies";
             }
         }
 
-        String coinMessage = "    %d " + coinName + ",\n";
-
+        String coinMessage = "    %d " + coinName + ",";
+        outputEmptyLine();
         System.out.printf(coinMessage, totalNumberOfCoinInChange);
     }
 }
