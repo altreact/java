@@ -17,10 +17,6 @@ public class Greedy {
         start();
     }
 
-    public static void setCurrency(char currencySymbol) {
-        currency = currencySymbol;
-    }
-
     private static void start() {
 
         displayProgramNameAndDescription();
