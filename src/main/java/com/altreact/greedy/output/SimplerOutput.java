@@ -14,10 +14,6 @@ public class SimplerOutput {
         java.lang.System.out.println(string);
     }
 
-    public static void outputLine(int integer) {
-        java.lang.System.out.println(integer);
-    }
-
     public static void outputEmptyLine() {
         java.lang.System.out.println();
     }

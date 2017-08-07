@@ -35,4 +35,8 @@ public class Converter {
 
         return Double.parseDouble(doubleWithTwoDigitPrecision);
     }
+
+    public static int doubleToPennies(double decimal) {
+        return (int) (decimal * 100);
+    }
 }

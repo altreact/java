@@ -5,31 +5,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CoinCalculatorTest {
 
-    private static int doubleToPennies(double amount) {
+    private static CoinCalculator coinCalculator;
+    private static CoinCalculator.Results coinCalculationResult;
 
-        return CoinCalculator.doubleToPennies(amount);
+    private static void getNewCoinCalculationResult(double amountToMakeChangeFor) {
+
+        coinCalculator = new CoinCalculator();
+        coinCalculationResult = coinCalculator.getCoinCalculationResults(amountToMakeChangeFor);
     }
-
-        @Test
-        void multipleDoubleToPennies() {
-
-
-            double doubles[] = {0.10, 1.91, 22.87, 44.88, 0, 5};
-            double expectedDoubles[] = {10, 191, 2287, 4488, 0, 500};
-
-            for (int current = 0; current < doubles.length; current++) {
-
-                double expected = expectedDoubles[current];
-                double actual = doubleToPennies(doubles[current]);
-
-                assertEquals(expected, actual);
-            }
-        }
 
     private void calculateNumberOfCoinsForEachCoinValue(int[] expectedCoinCounts, double number) {
 
-        CoinCalculator coinCalculator = new CoinCalculator();
-        assertArrayEquals(expectedCoinCounts, coinCalculator.calculateNumberOfCoinsForEachCoinValue(number));
+        getNewCoinCalculationResult(number);
+        assertArrayEquals(expectedCoinCounts, coinCalculationResult.getCoinCountsForEachCoinValue());
     }
 
     @Test
@@ -43,4 +31,22 @@ class CoinCalculatorTest {
         calculateNumberOfCoinsForEachCoinValue(coinCountsForZero, 0);
     }
 
+    private String getSummaryStringForCoin(int thisCoinCount, String coinName) {
+
+        return CoinCalculator.getSummaryStringForCoin(thisCoinCount, coinName);
+    }
+
+    private String getFormattedString(int number, String name) {
+
+        return "    " + number + " " + name + ",\n";
+    }
+
+    @Test
+    void multipleGetSummaryForCoin() {
+
+        assertEquals(getFormattedString(1, "penny"), getSummaryStringForCoin(1, "penny"));
+        assertEquals(getFormattedString(2, "pennies"), getSummaryStringForCoin(2, "penny"));
+        assertEquals(getFormattedString(3, "quarters"), getSummaryStringForCoin(3, "quarter"));
+        assertEquals(getFormattedString(1, "quarter"), getSummaryStringForCoin(1, "quarter"));
+    }
 }

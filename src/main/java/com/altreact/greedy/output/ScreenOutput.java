@@ -16,24 +16,4 @@ public class ScreenOutput {
         outputLine("********************************************************************************");
         outputEmptyLine();
     }
-
-    public static void printCoinAmount(String coinName, int totalNumberOfCoinInChange) {
-
-        if (totalNumberOfCoinInChange != 1) {
-
-            int lengthOfCoinName = coinName.length();
-            char lastLetterOfCoinName = coinName.charAt(lengthOfCoinName - 1);
-
-            if (lastLetterOfCoinName != 'y') {
-                coinName += "s";
-            } else {
-                String coinNameMinusTheTrailingLetterY = coinName.substring(0,  lengthOfCoinName- 1);
-                coinName = coinNameMinusTheTrailingLetterY + "ies";
-            }
-        }
-
-        String coinMessage = "    %d " + coinName + ",";
-        outputEmptyLine();
-        System.out.printf(coinMessage, totalNumberOfCoinInChange);
-    }
 }
